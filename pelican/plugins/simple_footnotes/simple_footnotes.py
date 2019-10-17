@@ -11,7 +11,7 @@ RAW_FOOTNOTE_CONTAINERS = ["code"]
 def getText(node, recursive=False):
     """Get all the text associated with this node.
        With recursive == True, all text from child nodes is retrieved."""
-    L = [u'']
+    L = [u""]
     for n in node.childNodes:
         if n.nodeType in (node.TEXT_NODE, node.CDATA_SECTION_NODE):
             L.append(n.data)
@@ -19,7 +19,7 @@ def getText(node, recursive=False):
             if not recursive:
                 return None
         L.append(getText(n))
-    return u''.join(L)
+    return u"".join(L)
 
 
 def sequence_gen(genlist):
@@ -30,13 +30,15 @@ def sequence_gen(genlist):
 
 def parse_for_footnotes(article_or_page_generator):
     all_content = [
-        getattr(article_or_page_generator, attr, None) \
-        for attr in [u'articles', u'drafts', u'pages']]
+        getattr(article_or_page_generator, attr, None)
+        for attr in [u"articles", u"drafts", u"pages"]
+    ]
     all_content = [x for x in all_content if x is not None]
     for article in sequence_gen(all_content):
         if u"[ref]" in article._content and u"[/ref]" in article._content:
-            content = article._content.replace(u"[ref]", u"<x-simple-footnote>").replace(u"[/ref]",
-                                                                                         u"</x-simple-footnote>")
+            content = article._content.replace(
+                u"[ref]", u"<x-simple-footnote>"
+            ).replace(u"[/ref]", u"</x-simple-footnote>")
             parser = html5lib.HTMLParser(tree=html5lib.getTreeBuilder(u"dom"))
             dom = parser.parse(content)
             endnotes = []
@@ -76,18 +78,27 @@ def parse_for_footnotes(article_or_page_generator):
                     backlink = dom.createElement(u"a")
                     backlink.setAttribute(u"href", u"#%s" % fnbackid)
                     backlink.setAttribute(u"class", u"simple-footnote-back")
-                    backlink.appendChild(dom.createTextNode(u'\u21a9'))
+                    backlink.appendChild(dom.createTextNode(u"\u21a9"))
                     li.appendChild(dom.createTextNode(u" "))
                     li.appendChild(backlink)
                     ol.appendChild(li)
                     e.parentNode.removeChild(e)
                 dom.getElementsByTagName(u"body")[0].appendChild(ol)
-                s = html5lib.serializer.HTMLSerializer(omit_optional_tags=False, quote_attr_values='legacy')
+                s = html5lib.serializer.HTMLSerializer(
+                    omit_optional_tags=False, quote_attr_values="legacy"
+                )
                 output_generator = s.serialize(
-                    html5lib.treewalkers.getTreeWalker(u"dom")(dom.getElementsByTagName(u"body")[0]))
-                article._content = u"".join(list(output_generator)).replace(
-                    u"<x-simple-footnote>", u"[ref]").replace(u"</x-simple-footnote>", u"[/ref]").replace(
-                    u"<body>", u"").replace(u"</body>", u"")
+                    html5lib.treewalkers.getTreeWalker(u"dom")(
+                        dom.getElementsByTagName(u"body")[0]
+                    )
+                )
+                article._content = (
+                    u"".join(list(output_generator))
+                    .replace(u"<x-simple-footnote>", u"[ref]")
+                    .replace(u"</x-simple-footnote>", u"[/ref]")
+                    .replace(u"<body>", u"")
+                    .replace(u"</body>", u"")
+                )
 
 
 def register():

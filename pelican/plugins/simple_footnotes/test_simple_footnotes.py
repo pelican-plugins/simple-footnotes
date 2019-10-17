@@ -1,4 +1,5 @@
 import unittest
+
 from simple_footnotes import parse_for_footnotes
 
 

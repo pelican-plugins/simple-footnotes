@@ -1,1 +1,1 @@
-from .simple_footnotes import *
+from .simple_footnotes import *  # NOQA

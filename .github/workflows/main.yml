@@ -23,14 +23,14 @@ jobs:
       - name: Linting
         run: poetry run invoke lint
       - name: Check release
-        if: github.ref == "refs/heads/master"
+        if: github.ref == 'refs/heads/master'
         run: |
           pip install githubrelease
           pip install https://github.com/autopub/autopub/archive/master.zip
           echo "##[set-output name=release;]$(autopub check)"
         id: check_release
       - name: Deploy
-        if: github.ref == "refs/heads/master" && github.event_name != "pull_request" && steps.check_release.outputs.release == ""
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && steps.check_release.outputs.release == ''
         run: |
           autopub prepare
           poetry build

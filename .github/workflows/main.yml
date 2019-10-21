@@ -1,0 +1,42 @@
+name: Main
+
+on: [push, pull_request]
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install Poetry
+        run: |
+          curl -O -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
+          source $HOME/.poetry/env
+      - name: Install dependencies
+        run: poetry install
+      - name: Run tests
+        run: poetry run invoke tests
+      - name: Linting
+        run: poetry run invoke lint
+      - name: Check release
+        if: github.ref == "refs/heads/master"
+        run: |
+          pip install githubrelease
+          pip install https://github.com/autopub/autopub/archive/master.zip
+          echo "##[set-output name=release;]$(autopub check)"
+        id: check_release
+      - name: Deploy
+        if: github.ref == "refs/heads/master" && github.event_name != "pull_request" && steps.check_release.outputs.release == ""
+        run: |
+          autopub prepare
+          poetry build
+          autopub commit
+          autopub githubrelease
+          poetry publish -r testpypi -u $PYPI_USERNAME -p $PYPI_PASSWORD
+        env:
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

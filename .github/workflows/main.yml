@@ -13,10 +13,7 @@ jobs:
         with:
           python-version: 3.7
       - name: Install Poetry
-        run: |
-          curl -O -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
-          python get-poetry.py -y
-          source $HOME/.poetry/env
+        run: pip install poetry
       - name: Install dependencies
         run: poetry install
       - name: Run tests

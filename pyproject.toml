@@ -6,8 +6,10 @@ authors = ["Stuart Langridge <sil@kryogenix.org>", "Justin Mayer <entrop@gmail.c
 license = "AGPL-3.0"
 readme = "README.md"
 keywords = ["footnotes", "pelican", "plugin"]
-
 repository = "https://github.com/pelican-plugins/simple-footnotes"
+packages = [
+    { include = "pelican" },
+]
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",

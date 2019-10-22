@@ -32,11 +32,13 @@ jobs:
       - name: Deploy
         if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && steps.check_release.outputs.release == ''
         run: |
+          git remote set-url origin https://$GH_TOKEN@github.com/$GITHUB_REPOSITORY
           autopub prepare
           poetry build
           autopub commit
           autopub githubrelease
           poetry publish -r testpypi -u autopub -p $PYPI_PASSWORD
         env:
+          GITHUB_REPOSITORY: ${{ GITHUB_REPOSITORY }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

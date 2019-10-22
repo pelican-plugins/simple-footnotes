@@ -1,9 +1,9 @@
-name: Main
+name: build
 
 on: [push, pull_request]
 
 jobs:
-  Test:
+  test:
     runs-on: ubuntu-latest
 
     steps:

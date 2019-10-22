@@ -24,7 +24,7 @@ jobs:
         run: poetry install
       - name: Run tests
         run: poetry run invoke tests
-      - name: Linting
+      - name: Run linters
         run: poetry run invoke lint
       - name: Check release
         if: github.ref == 'refs/heads/master'
@@ -42,8 +42,7 @@ jobs:
           poetry build
           autopub commit
           autopub githubrelease
-          poetry config repositories.testpypi https://test.pypi.org/legacy/
-          poetry publish -r testpypi -u autopub -p $PYPI_PASSWORD
+          poetry publish -u autopub -p $PYPI_PASSWORD
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

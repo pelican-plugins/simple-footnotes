@@ -10,7 +10,7 @@ Installation
 
 This plugin, and its dependent package `html5lib`, can be installed via:
 
-    pip install pelican-simple-footnotes
+    python -m pip install pelican-simple-footnotes
 
 Usage
 -----

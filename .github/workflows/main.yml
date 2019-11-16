@@ -42,7 +42,7 @@ jobs:
           poetry build
           autopub commit
           autopub githubrelease
-          poetry publish -u autopub -p $PYPI_PASSWORD
+          poetry publish -u __token__ -p $PYPI_PASSWORD
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}

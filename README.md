@@ -28,11 +28,12 @@ Here’s my written text<sup>1</sup>
 This should work with any content format (reST, Markdown, et cetera), because
 it looks for `[ref]` and `[/ref]` once the conversion to HTML has happened.
 
-Development
------------
+Contributing
+------------
 
-Contributions are welcome and much appreciated. See [CONTRIBUTING.md][] for more
-information.
+Contributions are welcome and much appreciated. Every little bit helps. You can contribute by improving the documentation, adding missing features, and fixing bugs. You can also help out by reviewing and commenting on [existing issues][].
+
+To start contributing to this plugin, review the [Contributing to Pelican][] documentation, beginning with the **Contributing Code** section.
 
 Credits
 -------
@@ -45,4 +46,5 @@ PyPI.
 Inspired by Andrew Nacin’s [Simple Footnotes WordPress plugin](https://wordpress.org/plugins/simple-footnotes/).
 
 
-[CONTRIBUTING.md]: https://github.com/pelican-plugins/simple-footnotes/blob/master/CONTRIBUTING.md
+[existing issues]: https://github.com/pelican-plugins/simple-footnotes/issues
+[Contributing to Pelican]: https://docs.getpelican.com/en/latest/contribute.html

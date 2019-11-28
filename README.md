@@ -1,7 +1,7 @@
 Simple Footnotes
 ================
 
-[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/simple-footnotes/build)](https://github.com/pelican-plugins/simple-footnotes/actions)
+[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/simple-footnotes/build)](https://github.com/pelican-plugins/simple-footnotes/actions) [![PyPI Version](https://img.shields.io/pypi/v/pelican-simple-footnotes)](https://pypi.org/project/pelican-simple-footnotes/)
 
 Simple Footnotes is a Pelican plugin for adding footnotes to articles and pages.
 

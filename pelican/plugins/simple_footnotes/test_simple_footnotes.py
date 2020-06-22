@@ -25,9 +25,9 @@ class TestFootnotes(unittest.TestCase):
         self._expect(
             "words[ref]footnote[/ref]end",
             (
-                "words<sup id=sf-article-1-back><a href=#sf-article-1 class=simple-footnote title=footnote>1</a></sup>end"
-                "<ol class=simple-footnotes>"
-                u"<li id=sf-article-1>footnote <a href=#sf-article-1-back class=simple-footnote-back>\u21a9</a></li>"
+                'words<sup id="sf-article-1-back"><a href="#sf-article-1" class="simple-footnote" title="footnote">1</a></sup>end'
+                '<ol class="simple-footnotes">'
+                u'<li id="sf-article-1">footnote <a href="#sf-article-1-back" class="simple-footnote-back">\u21a9</a></li>'
                 "</ol>"
             ),
         )

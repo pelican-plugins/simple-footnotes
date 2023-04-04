@@ -9,7 +9,7 @@ RAW_FOOTNOTE_CONTAINERS = ["code"]
 
 def getText(node, recursive=False):
     """Get all the text associated with this node.
-       With recursive == True, all text from child nodes is retrieved."""
+    With recursive == True, all text from child nodes is retrieved."""
     L = [""]
     for n in node.childNodes:
         if n.nodeType in (node.TEXT_NODE, node.CDATA_SECTION_NODE):

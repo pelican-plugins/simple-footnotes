@@ -28,7 +28,7 @@ classifiers = [
 "Issue Tracker" = "https://github.com/pelican-plugins/sitemap/issues"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = ">=3.8.1,<4.0"
 pelican = "^4.5"
 html5lib = "^1.1"
 markdown = {version = ">=3.2", optional = true}

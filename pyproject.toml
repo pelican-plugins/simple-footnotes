@@ -33,17 +33,16 @@ pelican = "^4.5"
 html5lib = "^1.1"
 markdown = {version = ">=3.2", optional = true}
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^23"
 flake8 = "^3.9"
 flake8-black = "^0.3"
-invoke = "^2.0"
-isort = "^5.4"
+invoke = "^2.1"
+isort = "^5.12"
 markdown = "^3.4"
-pytest = "^6.0"
-pytest-cov = "^2.7"
-pytest-pythonpath = "^0.7.3"
-pytest-sugar = "^0.9.6"
+pytest = "^7.0"
+pytest-cov = "^4.0"
+pytest-sugar = "^0.9.7"
 
 [tool.poetry.extras]
 markdown = ["markdown"]

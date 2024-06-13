@@ -25,7 +25,7 @@ This will appear as, roughly:
 
 Here’s my written text<sup>1</sup>
 
- 1. and here is a footnote ↩
+ 1. and here is a footnote ↩&#xFE0E;
 
 This should work with any content format (reST, Markdown, et cetera), because
 it looks for `[ref]` and `[/ref]` once the conversion to HTML has happened.

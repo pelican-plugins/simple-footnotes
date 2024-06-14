@@ -27,7 +27,7 @@ class TestFootnotes(unittest.TestCase):
             (
                 'words<sup id="sf-article-1-back"><a href="#sf-article-1" class="simple-footnote" title="footnote">1</a></sup>end'
                 '<ol class="simple-footnotes">'
-                '<li id="sf-article-1">footnote <a href="#sf-article-1-back" class="simple-footnote-back">\u21a9</a></li>'
+                '<li id="sf-article-1">footnote <a href="#sf-article-1-back" class="simple-footnote-back">\u21a9\ufe0e</a></li>'
                 "</ol>"
             ),
         )

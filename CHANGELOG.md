@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+1.6.1 - 2024-06-14
+------------------
+
+- Enable footnote generation on hidden pages and other page types
+- Render arrow Unicode character as text instead of emoji on iOS
+- Replace Poetry with PDM, Flake8/isort with Ruff
+- Drop official support for Python 3.6 & 3.7
+
+Contributed by [Justin Mayer](https://github.com/justinmayer) via [PR #12](https://github.com/pelican-plugins/simple-footnotes/pull/12/)
+
+
 1.0.2 - 2020-08-22
 ------------------
 

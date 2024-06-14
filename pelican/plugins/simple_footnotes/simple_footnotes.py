@@ -9,14 +9,15 @@ RAW_FOOTNOTE_CONTAINERS = ["code"]
 
 def getText(node, recursive=False):
     """Get all the text associated with this node.
-    With recursive == True, all text from child nodes is retrieved."""
+
+    With recursive == True, all text from child nodes is retrieved.
+    """
     L = [""]
     for n in node.childNodes:
         if n.nodeType in (node.TEXT_NODE, node.CDATA_SECTION_NODE):
             L.append(n.data)
-        else:
-            if not recursive:
-                return None
+        elif not recursive:
+            return None
         L.append(getText(n))
     return "".join(L)
 
@@ -68,7 +69,7 @@ def parse_for_footnotes(article_or_page_generator):
                 number = dom.createElement("sup")
                 number.setAttribute("id", fnbackid)
                 numbera = dom.createElement("a")
-                numbera.setAttribute("href", "#%s" % fnid)
+                numbera.setAttribute("href", f"#{fnid}")
                 numbera.setAttribute("class", "simple-footnote")
                 numbera.appendChild(dom.createTextNode(str(count)))
                 txt = getText(footnote, recursive=True).replace("\n", " ")
@@ -84,7 +85,7 @@ def parse_for_footnotes(article_or_page_generator):
                     while e.firstChild:
                         li.appendChild(e.firstChild)
                     backlink = dom.createElement("a")
-                    backlink.setAttribute("href", "#%s" % fnbackid)
+                    backlink.setAttribute("href", f"#{fnbackid}")
                     backlink.setAttribute("class", "simple-footnote-back")
                     backlink.appendChild(dom.createTextNode("\u21a9\ufe0e"))
                     li.appendChild(dom.createTextNode(" "))

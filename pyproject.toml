@@ -1,6 +1,6 @@
 [project]
-name = "pelican-photos"
-version = "1.6.1"
+name = "pelican-simple-footnotes"
+version = "1.0.2"
 description = "Pelican plugin to add footnotes to articles and pages"
 authors = [{name = "Stuart Langridge", email = "sil@kryogenix.org"}, {name = "Justin Mayer", email = "entroP@gmail.com"}]
 license = {text = "AGPL-3.0"}
